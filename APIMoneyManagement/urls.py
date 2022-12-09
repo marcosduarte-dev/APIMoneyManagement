@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 from rest_framework import routers
+import accounts
 
 from contas.api import viewsets as contasviewsets
 
@@ -25,6 +26,9 @@ route = routers.DefaultRouter()
 route.register(r'contas', contasviewsets.contasViewSet, basename="Contas")
 
 urlpatterns = [
+    path("", include('public.urls')),
+    path("api/accounts/", include('accounts.urls')),
     path("admin/", admin.site.urls),
     path("api/", include(route.urls)),
+    path('api/auth/', include('rest_framework.urls'))
 ]
