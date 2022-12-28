@@ -20,10 +20,12 @@ from rest_framework import routers
 import accounts
 
 from contas.api import viewsets as contasviewsets
+from receitas.api import viewsets as receitasviewsets
 
 route = routers.DefaultRouter()
 
 route.register(r'contas', contasviewsets.contasViewSet, basename="Contas")
+route.register(r'receitas', receitasviewsets.receitasViewSet, basename="Receitas")
 
 urlpatterns = [
     path("", include('public.urls')),
